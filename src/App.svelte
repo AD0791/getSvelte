@@ -7,4 +7,7 @@
 </main>
 
 <style>
+	 main {
+    padding: var(--spacingLarge);
+  }
 </style>
