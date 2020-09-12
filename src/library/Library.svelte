@@ -1,18 +1,18 @@
 <script>
-    import {onMount} from "svelte"
-    import BookGrid from "./BookGrid.svelte"
-    import Button from "../common/Button.svelte";
-    import {httpGet} from "../common/api.js";
+  import { onMount } from "svelte";
+  import BookGrid from "./BookGrid.svelte";
+  import Button from "../common/Button.svelte";
+  import { httpGet } from "../common/api.js";
 
-    let books = [];
-    onMount(async function() {
+  let books = [];
+  onMount(async function () {
     const { data } = await httpGet("/?_sort=id&_order=desc");
     books = data;
   });
 </script>
 
 <style>
-    header {
+  header {
     margin: var(--spacingMedium) 0 var(--spacingLarge) 0;
     text-transform: uppercase;
   }
@@ -43,4 +43,4 @@
 <!-- components -->
 <Button>+ Add Text</Button>
 
-<BookGrid books={books} />
+<BookGrid {books} on:book-select />

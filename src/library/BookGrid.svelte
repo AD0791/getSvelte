@@ -1,12 +1,12 @@
 <script>
-    import Heart from "./Heart.svelte";
-    import BookCover from "../common/BookCover.svelte";
-    export let books = [];
+  import Heart from "./Heart.svelte";
+  import BookCover from "../common/BookCover.svelte";
+  export let books = [];
 </script>
 
 <style>
-    /* your styles go here */
-    ul {
+  /* your styles go here */
+  ul {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(10rem, 1fr));
     grid-template-columns: repeat(auto-fill, minmax(8rem, 1fr));
@@ -29,14 +29,14 @@
 
 <!-- markup (zero or more items) goes here -->
 <ul>
-    {#each books as book}
-        <li> 
-            <BookCover book ={book} />
-            {#if book.favorite}
-                <div class="heart">
-                    <Heart />
-                </div>
-            {/if}
-        </li>
-    {/each}
+  {#each books as book}
+    <li>
+      <BookCover {book} on:book-select />
+      {#if book.favorite}
+        <div class="heart">
+          <Heart />
+        </div>
+      {/if}
+    </li>
+  {/each}
 </ul>
