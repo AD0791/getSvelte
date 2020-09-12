@@ -1,10 +1,12 @@
 <script>
-  import { createEventDispatcher } from "svelte";
+  //import { createEventDispatcher } from "svelte";
+  import { links } from "svelte-routing";
   export let book = {};
+  export let interactive = false;
   function isValidUrl(url) {
     return url && /http.+\.(jpg|png|gif)$/.test(url);
   }
-  const dispatch = createEventDispatcher();
+  //const dispatch = createEventDispatcher();
 </script>
 
 <style>
@@ -97,17 +99,32 @@
 </style>
 
 <!-- markup (zero or more items) goes here -->
-<a
-  href="#"
-  on:click={() => {
-    dispatch('book-select', { id: book.id });
-  }}
-  class="book book--interactive book--variation-{book.variation}
-    {isValidUrl(book.cover) ? 'book-cover' : 'book--no-cover'}">
-  <span
-    class="cover"
-    style={isValidUrl(book.cover) ? 'background-image: url(' + book.cover + ')' : ''}>
-    <span class="title">{book.title || ''}</span>
-    <span class="author">{book.author || ''}</span>
-  </span>
-</a>
+{#if interactive}
+  <a
+    href={`/books/${book.id}`}
+    use:links
+    class="book book--interactive book--variation-{book.variation}
+      {isValidUrl(book.cover) ? 'book-cover' : 'book--no-cover'}">
+    <span
+      class="cover"
+      style={isValidUrl(book.cover) ? 'background-image: url(' + book.cover + ')' : ''}>
+      <span class="title">{book.title || ''}</span>
+      <span class="author">{book.author || ''}</span>
+    </span>
+  </a>
+{:else}
+  <!-- else content here -->
+
+  <div
+    class="book book--variation-{book.variation}
+      {isValidUrl(book.cover) ? 'book--cover' : 'book--no-cover'}">
+    <div
+      class="cover"
+      style={isValidUrl(book.cover) ? 'background-image: url(' + book.cover + ')' : ''}>
+      <header>
+        <h2 class="title">{book.title || ''}</h2>
+      </header>
+      <div class="author">{book.author || ''}</div>
+    </div>
+  </div>
+{/if}

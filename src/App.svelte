@@ -1,14 +1,9 @@
 <script>
+  import { Router, Route } from "svelte-routing";
   import Library from "./library/Library.svelte";
   import Detail from "./detail/Detail.svelte";
   //know what book is selected
-  // temporary routing
-  let page = "library";
-  let pageArgs = {};
-  function handleBookSelect(event) {
-    page = "detail";
-    pageArgs = event.detail;
-  }
+  export let url;
 </script>
 
 <style>
@@ -17,10 +12,14 @@
   }
 </style>
 
-<main>
-  {#if page === 'detail'}
-    <Detail {...pageArgs} />
-  {:else}
-    <Library on:book-select={handleBookSelect} />
-  {/if}
-</main>
+<Router {url}>
+  <main>
+    <Route path="/books/:id" let:params>
+      <Detail id={params.id} />
+    </Route>
+
+    <Route path="/">
+      <Library />
+    </Route>
+  </main>
+</Router>

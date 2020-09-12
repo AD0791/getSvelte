@@ -43,4 +43,4 @@
 <!-- components -->
 <Button>+ Add Text</Button>
 
-<BookGrid {books} on:book-select />
+<BookGrid {books} />
