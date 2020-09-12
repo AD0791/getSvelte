@@ -3,7 +3,7 @@
     function isValidUrl(url) {
         return url && /http.+\.(jpg|png|gif)$/.test(url);
     }
-    const handlerClick = () => alert('click event book');
+    const handlerClick = id => alert('click event book ' + id);
 </script>
 
 <style>
@@ -96,7 +96,7 @@
 </style>
 <!-- markup (zero or more items) goes here -->
 <a href='#'
- on:click={handlerClick}
+ on:click={handlerClick(book.id)}
  class="book book--interactive book--variation-{book.variation} {isValidUrl(book.cover) ? 'book-cover': 'book--no-cover'}">
     <span class="cover" style={isValidUrl(book.cover) ? 'background-image: url(' + book.cover + ')' : ''}>
         <span class="title">{book.title || ""}</span>
