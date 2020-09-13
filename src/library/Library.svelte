@@ -41,6 +41,6 @@
 </p>
 
 <!-- components -->
-<Button>+ Add Text</Button>
+<Button to="/create">+ Add Book</Button>
 
 <BookGrid {books} />
