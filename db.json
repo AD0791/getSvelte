@@ -42,6 +42,15 @@
       "cover": "",
       "about": "Man hunts whale with a vengeance. In the end, he's the last man stand. I guess he won.",
       "variation": 1
+    },
+    {
+      "title": "Death",
+      "author": "13-Row",
+      "cover": "https://unsplash.com/photos/CXYPfveiuis",
+      "about": "Book is being posted for a reason.",
+      "variation": 2,
+      "favorite": true,
+      "id": 6
     }
   ]
 }
